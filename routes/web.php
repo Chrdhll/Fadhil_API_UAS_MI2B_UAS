@@ -16,3 +16,11 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->get('books', 'BooksController@index');
+    $router->get('books/{id}', 'BooksController@show');
+    $router->post('books', 'BooksController@store');
+    $router->put('books/{id}', 'BooksController@update');
+    $router->delete('books/{id}', 'BooksController@destroy');
+});
